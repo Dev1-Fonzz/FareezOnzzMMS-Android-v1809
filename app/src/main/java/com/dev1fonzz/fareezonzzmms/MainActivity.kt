@@ -313,7 +313,7 @@ class MainActivity : AppCompatActivity() {
                     val captureDir = (getExternalFilesDir("captures") ?: cacheDir).apply { mkdirs() }
                     val photoFile = File.createTempFile("FOZ_", ".jpg", captureDir)
                     cameraCaptureUri = FileProvider.getUriForFile(
-                        this, "$packageName.fileprovider", photoFile
+                        this@MainActivity, "$packageName.fileprovider", photoFile
                     )
                     cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE).apply {
                         putExtra(MediaStore.EXTRA_OUTPUT, cameraCaptureUri)
