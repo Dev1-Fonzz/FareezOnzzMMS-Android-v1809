@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dev1Fonzz brand palette — disamakan dengan src/config/app.config.js (THEME.colors) -->
+    <color name="foz_red">#C0392B</color>
+    <color name="foz_red2">#E74C3C</color>
+    <color name="foz_orange">#E67E22</color>
+    <color name="foz_orange2">#F39C12</color>
+    <color name="foz_dark">#0A0A0A</color>
+    <color name="foz_dark2">#111111</color>
+    <color name="foz_dark3">#1A1A1A</color>
+    <color name="foz_muted">#2A2A2A</color>
+    <color name="foz_border">#2E2E2E</color>
+    <color name="foz_text">#E8E8E8</color>
+    <color name="foz_dim">#888888</color>
+    <color name="foz_white">#FFFFFF</color>
+    <color name="foz_success">#2ECC71</color>
+</resources>

@@ -1,0 +1,84 @@
+// ============================================================
+//  Dev1Fonzz — FareezOnzz MMS Android Wrapper
+//  App module build config
+// ============================================================
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+// ============================================================
+//  Dev1Fonzz — baca local.properties (setara .env.local di web)
+//  Salin local.properties.example -> local.properties, isi nilai
+//  sebenar. Fail ni AUTO GITIGNORED (lihat .gitignore), sama
+//  konsep macam .env.local di projek web kau — JANGAN commit.
+// ============================================================
+def localProps = new Properties()
+def localPropsFile = rootProject.file('local.properties')
+if (localPropsFile.exists()) {
+    localProps.load(new FileInputStream(localPropsFile))
+}
+def sheetsApiKey = localProps.getProperty('GOOGLE_SHEETS_API_KEY', '')
+def sheetsId = localProps.getProperty('GOOGLE_SHEETS_ID', '')
+
+android {
+    namespace 'com.dev1fonzz.fareezonzzmms'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.dev1fonzz.fareezonzzmms"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+
+        vectorDrawables.useSupportLibrary = true
+
+        // Dari local.properties — lihat local.properties.example
+        buildConfigField "String", "GOOGLE_SHEETS_API_KEY", "\"${sheetsApiKey}\""
+        buildConfigField "String", "GOOGLE_SHEETS_ID", "\"${sheetsId}\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    buildFeatures {
+        viewBinding true
+        buildConfig true
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    implementation 'androidx.core:core-splashscreen:1.0.1'
+    implementation 'androidx.webkit:webkit:1.11.0'
+
+    // QR / barcode scanner native (imbas kad keahlian, check-in event)
+    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
+
+    // Biometric quick-unlock (fingerprint/face)
+    implementation 'androidx.biometric:biometric:1.1.0'
+
+    // Polling pengumuman berkala (check ANNOUNCEMENT_BOARD, papar notification native)
+    implementation 'androidx.work:work-runtime-ktx:2.9.1'
+}

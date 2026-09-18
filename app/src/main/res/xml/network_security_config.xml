@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Dev1Fonzz — Backend Secret Protection standard.
+  HTTPS sahaja dibenarkan. Tiada cleartext traffic langsung.
+  Domain di bawah ditakrifkan dalam Constants.kt (ALLOWED_HOSTS).
+  Tambah domain lain di sini jika kau tukar custom domain / subdomain baru.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">fareezonzz-mms.vercel.app</domain>
+        <domain includeSubdomains="true">vercel.app</domain>
+        <domain includeSubdomains="true">googleusercontent.com</domain>
+        <domain includeSubdomains="true">script.google.com</domain>
+        <domain includeSubdomains="true">script.googleusercontent.com</domain>
+    </domain-config>
+</network-security-config>

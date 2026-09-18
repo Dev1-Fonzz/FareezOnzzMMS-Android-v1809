@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Tema utama — HFUME dark surface matching web app.config.js THEME.colors.dark -->
+    <style name="Theme.FozMms" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/foz_red2</item>
+        <item name="colorPrimaryDark">@color/foz_dark</item>
+        <item name="colorAccent">@color/foz_orange2</item>
+        <item name="android:windowBackground">@color/foz_dark</item>
+        <item name="android:statusBarColor">@color/foz_dark</item>
+        <item name="android:navigationBarColor">@color/foz_dark</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+    <!-- Splash — androidx.core.splashscreen (fallback automatik untuk API < 31) -->
+    <style name="Theme.FozMms.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/foz_dark</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_logo</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/foz_dark</item>
+        <item name="postSplashScreenTheme">@style/Theme.FozMms</item>
+    </style>
+
+</resources>

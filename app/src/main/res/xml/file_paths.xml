@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <external-files-path name="foz_captures" path="captures/" />
+    <cache-path name="foz_cache" path="." />
+</paths>

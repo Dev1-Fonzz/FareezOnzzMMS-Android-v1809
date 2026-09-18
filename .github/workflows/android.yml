@@ -1,0 +1,44 @@
+name: Build APK
+
+# Dev1Fonzz — auto build APK setiap kali push ke branch main.
+# Boleh trigger manual juga via tab Actions -> "Run workflow".
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout kod
+        uses: actions/checkout@v4
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      # Guna setup-gradle rasmi — tak perlukan gradlew/gradle-wrapper.jar
+      # sebab kita belum generate wrapper binari tu (Android Studio biasanya
+      # generate automatik semasa Sync). Action ni auto baca versi Gradle
+      # dari gradle/wrapper/gradle-wrapper.properties & cache dependencies
+      # supaya build kedua & seterusnya jauh lebih laju.
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      # local.properties (GOOGLE_SHEETS_API_KEY/ID) sengaja TAKDE di sini
+      # sebab fail tu gitignored (macam .env.local) — build tetap berjaya,
+      # cuma ciri polling pengumuman senyap tak aktif dalam APK dari CI ni.
+      # Nak isi sekali? Tambah GitHub Secrets & satu step "echo" untuk
+      # jana local.properties sebelum build — bagitahu kalau nak saya buat.
+      - name: Build Debug APK
+        run: gradle assembleDebug --no-daemon --stacktrace
+
+      - name: Upload APK sebagai artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: FareezOnzzMMS-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          retention-days: 30

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:shortcutId="foz_card"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_card"
+        android:shortcutShortLabel="@string/shortcut_card_short"
+        android:shortcutLongLabel="@string/shortcut_card_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.dev1fonzz.fareezonzzmms"
+            android:targetClass="com.dev1fonzz.fareezonzzmms.MainActivity"
+            android:data="fozmms://open/member/card" />
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="foz_ticket"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_ticket"
+        android:shortcutShortLabel="@string/shortcut_ticket_short"
+        android:shortcutLongLabel="@string/shortcut_ticket_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.dev1fonzz.fareezonzzmms"
+            android:targetClass="com.dev1fonzz.fareezonzzmms.MainActivity"
+            android:data="fozmms://open/support/tickets" />
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="foz_announcement"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_announcement"
+        android:shortcutShortLabel="@string/shortcut_announcement_short"
+        android:shortcutLongLabel="@string/shortcut_announcement_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.dev1fonzz.fareezonzzmms"
+            android:targetClass="com.dev1fonzz.fareezonzzmms.MainActivity"
+            android:data="fozmms://open/announcements" />
+    </shortcut>
+
+</shortcuts>

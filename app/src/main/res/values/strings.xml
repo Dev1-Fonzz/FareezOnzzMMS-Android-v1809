@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FareezOnzz MMS</string>
+
+    <string name="offline_title">Tiada Sambungan Internet</string>
+    <string name="offline_desc">Sila semak sambungan data / WiFi anda dan cuba lagi.</string>
+    <string name="offline_retry">Cuba Lagi</string>
+
+    <string name="error_title">Sistem Tidak Dapat Dimuatkan</string>
+    <string name="error_desc">Berlaku masalah semasa menyambung ke pelayan FareezOnzz MMS.</string>
+
+    <string name="exit_confirm">Tekan sekali lagi untuk keluar</string>
+
+    <string name="permission_camera_denied">Kebenaran kamera diperlukan untuk imbas kad keahlian / muat naik gambar.</string>
+
+    <string name="downloading">Memuat turun fail…</string>
+    <string name="download_started">Muat turun dimulakan</string>
+
+    <string name="content_desc_logo">Logo FareezOnzz MMS</string>
+
+    <!-- FCM — pengumuman -->
+    <string name="notif_channel_announcements">pengumuman_foz</string>
+    <string name="notif_channel_announcements_name">Pengumuman</string>
+    <string name="notif_channel_announcements_desc">Notifikasi pengumuman &amp; kemaskini penting dari FareezOnzz MMS</string>
+
+    <!-- App Shortcuts -->
+    <string name="shortcut_card_short">Kad Saya</string>
+    <string name="shortcut_card_long">Buka Kad Keahlian</string>
+    <string name="shortcut_ticket_short">Sokongan</string>
+    <string name="shortcut_ticket_long">Tiket Sokongan</string>
+    <string name="shortcut_announcement_short">Pengumuman</string>
+    <string name="shortcut_announcement_long">Papan Pengumuman</string>
+
+    <!-- Biometric -->
+    <string name="biometric_locked_title">Aplikasi Dikunci</string>
+    <string name="biometric_locked_desc">Sahkan identiti anda untuk teruskan</string>
+    <string name="biometric_unlock_btn">Buka Kunci</string>
+    <string name="biometric_prompt_title">FareezOnzz MMS</string>
+    <string name="biometric_prompt_subtitle">Sahkan cap jari / wajah untuk masuk</string>
+</resources>
