@@ -134,7 +134,7 @@ class MainActivity : AppCompatActivity() {
         setupBackNavigation()
         requestNotificationPermissionIfNeeded()
 
-        binding.btnRetry.setOnClickListener { loadStart() }
+        binding.btnRetry.setOnClickListener { hardReload() }
         binding.btnUnlock.setOnClickListener { showBiometricPrompt() }
 
         if (savedInstanceState != null) {
@@ -234,6 +234,23 @@ class MainActivity : AppCompatActivity() {
         binding.offlineLayout.visibility = View.GONE
         binding.webView.visibility = View.VISIBLE
         binding.webView.loadUrl(Constants.BASE_URL + Constants.START_PATH)
+    }
+
+    /**
+     * "Reload keras" — buang cache WebView dulu sebelum muat semula.
+     * Berbeza dari webView.reload() / window.location.reload() dalam
+     * page (yang boleh terperangkap ambil semula fail JS/CSS lama yang
+     * sama dari cache WebView sendiri kalau server dah deploy versi
+     * baru). Guna ini untuk "Cuba Lagi" & tarik-untuk-segar (pull to
+     * refresh) supaya benar-benar dapat versi terkini dari server.
+     */
+    private fun hardReload() {
+        val current = binding.webView.url?.takeIf { it.isNotBlank() }
+            ?: (Constants.BASE_URL + Constants.START_PATH)
+        binding.webView.clearCache(true)
+        binding.offlineLayout.visibility = View.GONE
+        binding.webView.visibility = View.VISIBLE
+        binding.webView.loadUrl(current)
     }
 
     private inner class FozWebViewClient : WebViewClient() {
@@ -372,7 +389,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupSwipeRefresh() {
         binding.swipeRefresh.setColorSchemeResources(android.R.color.white)
         binding.swipeRefresh.setProgressBackgroundColorSchemeResource(R.color.foz_red2)
-        binding.swipeRefresh.setOnRefreshListener { binding.webView.reload() }
+        binding.swipeRefresh.setOnRefreshListener { hardReload() }
         binding.swipeRefresh.setOnChildScrollUpCallback { _, _ ->
             binding.webView.canScrollVertically(-1)
         }
